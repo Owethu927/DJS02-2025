@@ -1,9 +1,10 @@
+//Importing the DateUtils file to format human readable dates
+import { DateUtils } from "./Utils/DateUtils";
+
 //Create a template
 const template = document.createElement("template");
 template.innerHTML = `
  <style>
-
-
 .card {
   background: white;
   padding: 1rem;
@@ -57,8 +58,9 @@ template.innerHTML = `
  <div class="card">
   <img />
   <h3></h3>
-  <div class"tag"></div>
-  <div class"updated-text"></div>
+  <div class"tag" id="tag"></div>
+  <p id="seasons"></p>
+  <p class="updated-text"></p>
  <div>`;
 
 // Creating a class
@@ -67,6 +69,9 @@ class PodcastPreview extends HTMLElement {
     super();
     this.attachShadow({ mode: "open" });
     this.shadowRoot.appendChild(template.content.cloneNode(true));
+    this.shadowRoot.querySelector("h3").innerHTML = this.getAttribute("title");
+    this.shadowRoot.querySelector("img").src = this.getAttribute("image");
+    this.shadowRoot.querySelector("p").innerHTML = this.getAttribute("genres");
   }
 }
 
