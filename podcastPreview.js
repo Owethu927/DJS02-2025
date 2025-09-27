@@ -33,4 +33,20 @@ class PodcastPreview extends HTMLElement {
       );
     });
   }
+  
+  // Format the "updated" date into a human-readable format
+  formatDate(dateString) {
+    const date = new Date(dateString);
+    return date.toLocaleDateString(undefined, {
+      year: 'numeric', month: 'short', day: 'numeric'
+    });
+  }
+
+  // Render the component's HTML and styles
+  render() {
+    if (!this.shadowRoot) return;
+
+    // Parse the genres from a JSON string attribute
+    const genres = this.genres ? JSON.parse(this.genres) : [];
+
 }
